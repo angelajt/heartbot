@@ -1,12 +1,42 @@
 {
-  "displayName": "heartbot module 2",
+  "displayName": "heartbot module 1",
   "defaultLanguageCode": "en",
   "timeZone": "America/Los_Angeles",
   "projectNumber": 970039229590,
+  "speechToTextSettings": {
+  
+  },
   "advancedSettings": {
+    "audioExportGcsDestination": {
+    
+    },
+    "speechSettings": {
+      "endpointerSensitivity": 90,
+      "noSpeechTimeout": {
+        "seconds": 5
+      }
+    },
+    "playbackInterruptionSettings": {
+    
+    },
     "loggingSettings": {
+    
+    },
+    "speechAdaptationSettings": {
     
     }
   },
-  "startPlaybook": "Default Generative Playbook"
+  "speakerIdSettings": {
+  
+  },
+  "duplexSettings": {
+  
+  },
+  "answerFeedbackSettings": {
+  
+  },
+  "startPlaybook": "Default Generative Playbook",
+  "webClientSettings": {
+    "boxBorderRadius": "0"
+  }
 }

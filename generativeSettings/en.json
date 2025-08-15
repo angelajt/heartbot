@@ -33,6 +33,7 @@
         "filterLevel": "BLOCK_SOME"
       } ]
     },
+    "defaultBannedPhraseMatchStrategy": "PARTIAL_MATCH",
     "responsibleAiFilters": [ {
       "category": "DANGEROUS_CONTENT",
       "filterLevel": "MINIMAL_BLOCKING"
@@ -66,12 +67,15 @@
   },
   "languageCode": "en",
   "knowledgeConnectorSettings": {
+    "groundingSettings": {
+      "groundingConfidence": "LOW"
+    },
     "mainLlmConfig": {
     
     }
   },
   "llmModelSettings": {
-    "model": "gemini-2.5-flash",
+    "model": "gemini-2.0-flash-001",
     "parameters": {
       "temperature": 0.89999998,
       "inputTokenLimit": "INPUT_TOKEN_LIMIT_SHORT",
@@ -80,7 +84,7 @@
   },
   "playbookSettings": {
     "memoryRetentionSettings": {
-    
+      "contextWindow": "CONTEXT_WINDOW_INDEFINITE"
     }
   }
 }
