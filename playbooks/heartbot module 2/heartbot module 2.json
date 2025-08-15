@@ -1,8 +1,8 @@
 {
   "name": "00000000-0000-0000-0000-000000000000",
-  "displayName": "Default Generative Playbook",
-  "goal": "Inform user about heart attacks. Always provide a response to every message.",
-  "tokenCount": 2992,
+  "displayName": "heartbot module 2",
+  "goal": "Inform the user about heart attacks. Always provide a response to any message, and always prompt the user with a predetermined question after every message.",
+  "tokenCount": 3006,
   "instruction": {
     "steps": [ {
       "text": "*Heartbot Module 2:*"
