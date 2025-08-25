@@ -2,10 +2,12 @@
   "displayName": "heartbot module 1",
   "defaultLanguageCode": "en",
   "timeZone": "America/Los_Angeles",
+  "enableLogging": true,
   "projectNumber": 970039229590,
   "speechToTextSettings": {
   
   },
+  "enableStackdriverLogging": true,
   "advancedSettings": {
     "audioExportGcsDestination": {
     
@@ -20,7 +22,8 @@
     
     },
     "loggingSettings": {
-    
+      "enableStackdriverLogging": true,
+      "enableInteractionLogging": true
     },
     "speechAdaptationSettings": {
     
