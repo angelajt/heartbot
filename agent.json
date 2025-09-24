@@ -2,11 +2,47 @@
   "displayName": "heartbot module 2",
   "defaultLanguageCode": "en",
   "timeZone": "America/Los_Angeles",
+  "enableLogging": true,
   "projectNumber": 970039229590,
+  "speechToTextSettings": {
+  
+  },
+  "enableStackdriverLogging": true,
   "advancedSettings": {
+    "audioExportGcsDestination": {
+    
+    },
+    "speechSettings": {
+      "endpointerSensitivity": 90,
+      "noSpeechTimeout": {
+        "seconds": 5
+      }
+    },
+    "playbackInterruptionSettings": {
+    
+    },
     "loggingSettings": {
+      "enableStackdriverLogging": true,
+      "enableInteractionLogging": true
+    },
+    "speechAdaptationSettings": {
     
     }
   },
-  "startPlaybook": "heartbot module 2"
+  "speakerIdSettings": {
+  
+  },
+  "genAppBuilderSettings": {
+    "engine": "projects/970039229590/locations/us/collections/default_collection/engines/d63de907-dbb3-48d9-838c-739b2f4cd046-chat-1758234154"
+  },
+  "duplexSettings": {
+  
+  },
+  "answerFeedbackSettings": {
+  
+  },
+  "startPlaybook": "heartbot module 2",
+  "webClientSettings": {
+    "boxBorderRadius": "0"
+  }
 }
