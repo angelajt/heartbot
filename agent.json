@@ -8,5 +8,8 @@
     
     }
   },
+  "genAppBuilderSettings": {
+    "engine": "projects/970039229590/locations/us/collections/default_collection/engines/fa5cfcb5-4340-4506-908b-8d3e92f39c4f-chat-1758234981"
+  },
   "startPlaybook": "heartbot module 4"
 }

@@ -1,0 +1,41 @@
+{
+  "name": "74594cad-4e3b-4376-82c9-b6b82643e81e",
+  "displayName": "knowledge-bank",
+  "description": "Frequently asked medical questions that the user may ask during the chatbot interaction. If a user asks a question that is in this list, answer with the information from this data store instead of your own knowledge base.",
+  "dataStoreSpec": {
+    "dataStoreConnections": [ {
+      "dataStoreType": "STRUCTURED",
+      "dataStore": "projects/970039229590/locations/us/collections/default_collection/dataStores/knowledge-bank-v2_1758069032737",
+      "documentProcessingMode": "DOCUMENTS",
+      "engineType": "CHAT_ENGINE",
+      "connectorConfig": {
+      
+      },
+      "createTime": {
+        "seconds": 1758069033,
+        "nanos": 603297000
+      },
+      "displayName": "knowledge-bank-v2",
+      "dialogflowAddTime": {
+        "seconds": 1758234981,
+        "nanos": 328000000
+      }
+    } ],
+    "models": {
+      "summarizationModel": {
+        "model": "default"
+      },
+      "rewriterModel": {
+        "model": "default"
+      }
+    },
+    "groundingSettings": {
+    
+    },
+    "payloadSettings": {
+    
+    },
+    "mode": "MODE_DEFAULT"
+  },
+  "toolType": "CUSTOMIZED_TOOL"
+}
