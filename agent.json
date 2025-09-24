@@ -2,11 +2,26 @@
   "displayName": "heartbot module 3",
   "defaultLanguageCode": "en",
   "timeZone": "America/Los_Angeles",
+  "enableLogging": true,
   "projectNumber": 970039229590,
+  "enableStackdriverLogging": true,
   "advancedSettings": {
-    "loggingSettings": {
+    "audioExportGcsDestination": {
     
+    },
+    "loggingSettings": {
+      "enableStackdriverLogging": true,
+      "enableInteractionLogging": true
     }
   },
-  "startPlaybook": "heartbot module 3"
+  "genAppBuilderSettings": {
+    "engine": "projects/970039229590/locations/us/collections/default_collection/engines/4e3ce067-0ad4-4787-8fc9-368b09bb9e9a-chat-1758234799"
+  },
+  "answerFeedbackSettings": {
+  
+  },
+  "startPlaybook": "heartbot module 3",
+  "webClientSettings": {
+    "boxBorderRadius": "0"
+  }
 }
