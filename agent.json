@@ -32,13 +32,16 @@
   "speakerIdSettings": {
   
   },
+  "genAppBuilderSettings": {
+    "engine": "projects/970039229590/locations/us/collections/default_collection/engines/653a6270-05fd-4b6c-8203-6d4708570972-chat-1758063746"
+  },
   "duplexSettings": {
   
   },
   "answerFeedbackSettings": {
   
   },
-  "startPlaybook": "Default Generative Playbook",
+  "startPlaybook": "heartbot module 1",
   "webClientSettings": {
     "boxBorderRadius": "0"
   }
