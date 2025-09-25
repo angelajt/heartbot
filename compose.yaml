@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  heartbot:
+    image: heartbot:0.0
+    container_name: heartbot
+    ports:
+      - "${PORT}:8042"
+    restart: "always"
+
