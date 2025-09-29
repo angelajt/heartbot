@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   heartbot:
-    image: heartbot:0.0
+    image: us-central1-docker.pkg.dev/heartbot2/heartbot/heartbot:0.0
     container_name: heartbot
     ports:
       - "${PORT}:8042"
