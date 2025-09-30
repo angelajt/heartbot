@@ -5,7 +5,7 @@ def get_client_ui():
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Chatbot Interface</title>
+        <title>Heartbot</title>
         <style>
             body { font-family: Arial, sans-serif; margin: 20px; }
             #chatHistory { width: 100%; height: 300px; border: 1px solid #ccc; padding: 10px; overflow-y: scroll; margin-bottom: 10px; }
@@ -16,7 +16,7 @@ def get_client_ui():
         </style>
     </head>
     <body>
-        <h2>Chatbot Interface</h2>
+        <h2>Heartbot</h2>
         <div>
             <label for="session_id">User Code (Session ID): </label>
             <input type="text" id="session_id" placeholder="Enter your session id">
@@ -71,6 +71,11 @@ def get_client_ui():
             // Save session_id to cookie when changed
             document.getElementById("session_id").addEventListener("change", function() {
                 setCookie("session_id", this.value, 30);
+            });
+
+            // Clear chat history when the module selection is changed.
+            document.getElementById("module_select").addEventListener("change", function() {
+                document.getElementById("chatHistory").innerHTML = "";
             });
 
             async function sendMessage() {
