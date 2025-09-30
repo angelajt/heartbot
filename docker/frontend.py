@@ -2,6 +2,8 @@ from typing import Optional
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import backend  # Import the backend module to talk to the Google conversational agents API
+from fastapi.responses import HTMLResponse
+import client  # Import the client module that provides the UI
 
 app = FastAPI()
 
@@ -24,3 +26,8 @@ def chat_endpoint(chat: ChatRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     return ChatResponse(response=agent_response)
+
+# Route the root URL to serve the client UI.
+@app.get("/", response_class=HTMLResponse)
+def root():
+    return client.get_client_ui()

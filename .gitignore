@@ -1,2 +1,8 @@
 docker/__pycache__
 docker/local
+
+# grokker files
+# https://github.com/stevegt/grokker
+.grok
+.grok.lock
+.aidda
