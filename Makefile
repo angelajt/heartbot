@@ -1,4 +1,4 @@
-export TAG = 0.3
+export TAG = 0.$(shell date +%Y.%m.%d.%H%M)
 
 all: build push restart
 
@@ -9,5 +9,5 @@ push:
 	docker push us-central1-docker.pkg.dev/heartbot2/heartbot/heartbot:$(TAG)
 
 restart:
-	docker-compose --env-file ./local/.env -H "ssh://angela@34.171.194.61" down
-	docker-compose --env-file ./local/.env -H "ssh://angela@34.171.194.61" up -d
+	docker-compose --env-file docker/local/.env -H "ssh://angela@34.171.194.61" down
+	docker-compose --env-file docker/local/.env -H "ssh://angela@34.171.194.61" up -d

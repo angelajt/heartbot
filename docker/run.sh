@@ -4,7 +4,7 @@
 set -e
 
 # set environment variables
-# . ../local/.env
+. ./local/.env
 
 # show environment variables
 printenv
