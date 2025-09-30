@@ -5,18 +5,9 @@ import backend  # Import the backend module to talk to the Google conversational
 
 app = FastAPI()
 
-# Simple root endpoint.
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-# Example endpoint similar to the one in x/fastapi/example/main.py.
-@app.get("/items/{item_id}/{name}")
-def read_item(item_id: int, q: Optional[str] = None, r: Optional[str] = None, name: str = "default_name"):
-    return {"item_id": item_id, "name": name, "q": q, "r": r}
-
 # Define request and response models for the /chat endpoint.
 class ChatRequest(BaseModel):
+    module: int
     session_id: str   # Required session id provided by the client.
     message: str
 
@@ -29,7 +20,7 @@ class ChatResponse(BaseModel):
 @app.post("/chat", response_model=ChatResponse)
 def chat_endpoint(chat: ChatRequest):
     try:
-        agent_response = backend.chat_with_agent(chat.message, chat.session_id)
+        agent_response = backend.chat_with_module(chat.message, chat.session_id, chat.module)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     return ChatResponse(response=agent_response)

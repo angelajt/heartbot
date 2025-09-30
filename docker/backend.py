@@ -7,12 +7,23 @@ from google.cloud.dialogflowcx_v3beta1.types import session
 # Set credentials by running `. ./local/.env` in terminal before executing this script
 
 # Set up agent details from environment variables.
-PROJECT_ID = os.getenv("DIALOGFLOW_PROJECT_ID", "your-project-id")
-LOCATION_ID = os.getenv("DIALOGFLOW_LOCATION_ID", "global")  # or your specific region like "us-central1"
-AGENT_ID = os.getenv("DIALOGFLOW_AGENT_ID", "your-agent-uuid")  # The UUID part from the agent name
+PROJECT_ID = os.getenv("PROJECT_ID", "invalid-project-id")
+LOCATION_ID = os.getenv("LOCATION_ID", "global")  # or your specific region like "us-central1"
+
+MODULE_TO_AGENT_ID = {
+    1: os.getenv("AGENT_ID_MODULE1", "invalid-agent-id-1"),
+    2: os.getenv("AGENT_ID_MODULE2", "invalid-agent-id-2"),
+    3: os.getenv("AGENT_ID_MODULE3", "invalid-agent-id-3"),
+    4: os.getenv("AGENT_ID_MODULE4", "invalid-agent-id-4"),
+}
+
+print(f"Loaded agent IDs: {MODULE_TO_AGENT_ID}")
+
+# default agent id if module not found
+DEFAULT_AGENT_ID = os.getenv("AGENT_ID_MODULE1", "invalid-agent-id-1")
 
 # Build the agent path.
-AGENT = f"projects/{PROJECT_ID}/locations/{LOCATION_ID}/agents/{AGENT_ID}"
+PATH = f"projects/{PROJECT_ID}/locations/{LOCATION_ID}/agents"
 LANGUAGE_CODE = "en-us"
 
 # Configure the client with the regional endpoint.
@@ -22,9 +33,12 @@ session_client = SessionsClient(client_options=client_options)
 
 # Function to send a message to your agent. Frontend should call this.
 # Now requires the client to provide a session_id, allowing client-controlled persistent sessions.
-def chat_with_agent(message_text: str, session_id: str) -> str:
+def chat_with_module(message_text: str, session_id: str, module: int) -> str:
+    agent_id = MODULE_TO_AGENT_ID.get(module, DEFAULT_AGENT_ID)
     # Build the session path using the provided session_id.
-    session_path = f"{AGENT}/sessions/{session_id}"
+    session_path = f"{PATH}/{agent_id}/sessions/{session_id}"
+
+    print(f"Session path: {session_path}")
     
     text_input = session.TextInput(text=message_text)
     query_input = session.QueryInput(text=text_input, language_code=LANGUAGE_CODE)
