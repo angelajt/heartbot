@@ -54,10 +54,10 @@ def get_client_ui():
                 let expires = "";
                 if (days) {
                     let date = new Date();
-                    date.setTime(date.getTime() + (days*24*60*60*1000));
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
                     expires = "; expires=" + date.toUTCString();
                 }
-                document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+                document.cookie = name + "=" + (value || "") + expires + "; path=/";
             }
             
             // On page load, populate session_id from cookie if available
@@ -78,6 +78,17 @@ def get_client_ui():
                 document.getElementById("chatHistory").innerHTML = "";
             });
 
+            // Function to format message by inserting a paragraph break for newlines.
+            // When a newline is detected in the response, each line becomes its own paragraph.
+            function formatMessage(sender, message) {
+                const lines = message.split('\n');
+                let formatted = "<p><strong>" + sender + ":</strong> " + lines[0] + "</p>";
+                for (let i = 1; i < lines.length; i++) {
+                    formatted += "<p>" + lines[i] + "</p>";
+                }
+                return formatted;
+            }
+
             async function sendMessage() {
                 const session_id = document.getElementById("session_id").value;
                 const module = parseInt(document.getElementById("module_select").value);
@@ -94,7 +105,7 @@ def get_client_ui():
 
                 // Append user's message to chat history
                 const chatHistory = document.getElementById("chatHistory");
-                chatHistory.innerHTML += "<p><strong>You:</strong> " + message + "</p>";
+                chatHistory.innerHTML += formatMessage("You", message);
 
                 // Prepare the payload for POST request
                 const payload = {
@@ -112,8 +123,8 @@ def get_client_ui():
                         body: JSON.stringify(payload)
                     });
                     const data = await response.json();
-                    // Append bot's response to chat history
-                    chatHistory.innerHTML += "<p><strong>Bot:</strong> " + data.response + "</p>";
+                    // Append bot's response to chat history, inserting paragraph breaks for newlines.
+                    chatHistory.innerHTML += formatMessage("Bot", data.response);
                 } catch (error) {
                     chatHistory.innerHTML += "<p><strong>Error:</strong> " + error + "</p>";
                 }
