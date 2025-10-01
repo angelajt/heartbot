@@ -17,6 +17,7 @@ def get_client_ui():
     </head>
     <body>
         <h2>Heartbot</h2>
+        <p>NOTE: This is a proof-of-concept interface, for testing purposes only.</p>
         <div>
             <label for="session_id">User Code (Session ID): </label>
             <input type="text" id="session_id" placeholder="Enter your session id">
