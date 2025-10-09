@@ -82,7 +82,7 @@ def get_client_ui():
             // Function to format message by inserting a paragraph break for newlines.
             // When a newline is detected in the response, each line becomes its own paragraph.
             function formatMessage(sender, message) {
-                const lines = message.split('\n');
+                const lines = message.split('\\n');
                 let formatted = "<p><strong>" + sender + ":</strong> " + lines[0] + "</p>";
                 for (let i = 1; i < lines.length; i++) {
                     formatted += "<p>" + lines[i] + "</p>";
@@ -100,7 +100,8 @@ def get_client_ui():
                     return;
                 }
 
-                if (!message) {
+                // If message is blank or contains only whitespace, do nothing.
+                if (!message || message.trim() === "") {
                     return;
                 }
 
@@ -135,6 +136,18 @@ def get_client_ui():
                 // Scroll to the bottom of the chat history
                 chatHistory.scrollTop = chatHistory.scrollHeight;
             }
+
+            // Send the message when the user hits Enter, unless the message is blank or whitespace.
+            document.getElementById("message_input").addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    // Prevent the default action of the Enter key.
+                    event.preventDefault();
+                    const message = this.value;
+                    if (message && message.trim() !== "") {
+                        sendMessage();
+                    }
+                }
+            });
         </script>
     </body>
     </html>
