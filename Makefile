@@ -1,4 +1,5 @@
-export TAG = 0.$(shell date +%Y.%m.%d.%H%M)
+TAG := 0.$(shell date +%Y.%m.%d.%H%M)
+export TAG
 
 all: build push restart
 
