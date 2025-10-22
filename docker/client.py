@@ -18,6 +18,10 @@ def get_client_ui():
     <body>
         <h2>Heartbot</h2>
         <p>NOTE: This is a proof-of-concept interface, for testing purposes only.</p>
+        <h3>Instructions:</h3>
+        <p>1. <b>Enter your session ID.</b> The session ID can be any string of numbers and/or letters. This is just so that the bot can keep track of a single conversation (so if you change the session ID, you start a new conversation. You can also go back to an old conversation if you remember the session ID. If you happen to input the same session ID as someone else, you might see some strange behavior because you're basically continuing someone else's chat history).</p>
+        <p>2. Select the module in the pull-down menu, starting with Module 1. <b>Please complete all four modules in sequential order.</b></p>
+        <p>3. Type your message in the text box and hit Enter or click the Send button. <b>To start, simply send a greeting like "hi" or "hello".</b></p>
         <div>
             <label for="session_id">User Code (Session ID): </label>
             <input type="text" id="session_id" placeholder="Enter your session id">
@@ -81,7 +85,13 @@ def get_client_ui():
 
             // Function to format message by inserting a paragraph break for newlines.
             // When a newline is detected in the response, each line becomes its own paragraph.
+            // Also add hyperlinks where applicable.
             function formatMessage(sender, message) {
+                // If the message contains URLs, convert them to clickable links.
+                const urlRegex = /(https?:\/\/[^\s]+)/g;
+                message = message.replace(urlRegex, function(url) {
+                    return '<a href="' + url + '" target="_blank">' + url + '</a>';
+                });
                 const lines = message.split('\\n');
                 let formatted = "<p><strong>" + sender + ":</strong> " + lines[0] + "</p>";
                 for (let i = 1; i < lines.length; i++) {
@@ -125,7 +135,10 @@ def get_client_ui():
                         body: JSON.stringify(payload)
                     });
                     const data = await response.json();
-                    // Append bot's response to chat history, inserting paragraph breaks for newlines.
+                    // Append image (if applicable) and bot's response to chat history, inserting paragraph breaks for newlines.
+                    if (data.image && data.image.trim() !== "") {
+                        chatHistory.innerHTML += `<img src="${data.image}" alt="Image" style="max-width: 100%; margin-bottom: 10px;">`;
+                    }
                     chatHistory.innerHTML += formatMessage("Bot", data.response);
                 } catch (error) {
                     chatHistory.innerHTML += "<p><strong>Error:</strong> " + error + "</p>";
@@ -148,6 +161,7 @@ def get_client_ui():
                     }
                 }
             });
+
         </script>
     </body>
     </html>

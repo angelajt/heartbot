@@ -15,6 +15,7 @@ class ChatRequest(BaseModel):
 
 class ChatResponse(BaseModel):
     response: str
+    image: Optional[str] = None
 
 # Endpoint that receives a chat message from phone apps or web apps,
 # forwards it to the backend module, and returns the agent's response as JSON.
@@ -25,7 +26,7 @@ def chat_endpoint(chat: ChatRequest):
         agent_response = backend.chat_with_module(chat.message, chat.session_id, chat.module)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-    return ChatResponse(response=agent_response)
+    return ChatResponse(**agent_response)
 
 # Route the root URL to serve the client UI.
 @app.get("/", response_class=HTMLResponse)

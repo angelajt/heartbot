@@ -1,6 +1,7 @@
 # pip install google-cloud-dialogflow-cx
 
 import os
+import re
 from google.cloud.dialogflowcx_v3beta1.services.sessions import SessionsClient
 from google.cloud.dialogflowcx_v3beta1.types import session
 
@@ -33,7 +34,7 @@ session_client = SessionsClient(client_options=client_options)
 
 # Function to send a message to your agent. Frontend should call this.
 # Now requires the client to provide a session_id, allowing client-controlled persistent sessions.
-def chat_with_module(message_text: str, session_id: str, module: int) -> str:
+def chat_with_module(message_text: str, session_id: str, module: int) -> dict:
     agent_id = MODULE_TO_AGENT_ID.get(module, DEFAULT_AGENT_ID)
     # Build the session path using the provided session_id.
     session_path = f"{PATH}/{agent_id}/sessions/{session_id}"
@@ -53,4 +54,14 @@ def chat_with_module(message_text: str, session_id: str, module: int) -> str:
     response_messages = [
         " ".join(msg.text.text) for msg in response.query_result.response_messages
     ]
-    return " ".join(response_messages)
+    agent_text = " ".join(response_messages)
+    
+    # Search for an image tag in the format "[image: <image_url>]"
+    image_url = None
+    match = re.search(r'\[image:\s*(.*?)\]', agent_text)
+    if match:
+        image_url = match.group(1).strip()
+        # Remove the image tag from the agent text.
+        agent_text = re.sub(r'\[image:\s*.*?\]', '', agent_text).strip()
+    
+    return {"response": agent_text, "image": image_url}
