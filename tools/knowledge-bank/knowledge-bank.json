@@ -5,20 +5,20 @@
   "dataStoreSpec": {
     "dataStoreConnections": [ {
       "dataStoreType": "STRUCTURED",
-      "dataStore": "projects/970039229590/locations/us/collections/default_collection/dataStores/knowledge-bank-v2_1758069032737",
+      "dataStore": "projects/970039229590/locations/us/collections/default_collection/dataStores/knowledge-bank-v3_1761075631190",
       "documentProcessingMode": "DOCUMENTS",
       "engineType": "CHAT_ENGINE",
       "connectorConfig": {
       
       },
       "createTime": {
-        "seconds": 1758069033,
-        "nanos": 603297000
+        "seconds": 1761075632,
+        "nanos": 757765000
       },
-      "displayName": "knowledge-bank-v2",
+      "displayName": "knowledge-bank-v3",
       "dialogflowAddTime": {
-        "seconds": 1758234154,
-        "nanos": 670000000
+        "seconds": 1761075773,
+        "nanos": 450000000
       }
     } ],
     "models": {
