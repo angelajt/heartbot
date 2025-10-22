@@ -33,6 +33,7 @@
         "filterLevel": "BLOCK_SOME"
       } ]
     },
+    "defaultBannedPhraseMatchStrategy": "PARTIAL_MATCH",
     "responsibleAiFilters": [ {
       "category": "DANGEROUS_CONTENT",
       "filterLevel": "MINIMAL_BLOCKING"
@@ -66,6 +67,9 @@
   },
   "languageCode": "en",
   "knowledgeConnectorSettings": {
+    "groundingSettings": {
+      "groundingConfidence": "LOW"
+    },
     "mainLlmConfig": {
     
     }
@@ -80,7 +84,7 @@
   },
   "playbookSettings": {
     "memoryRetentionSettings": {
-    
+      "contextWindow": "CONTEXT_WINDOW_INDEFINITE"
     }
   }
 }
