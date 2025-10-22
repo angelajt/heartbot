@@ -9,13 +9,13 @@
         "filterLevel": "BLOCK_FEW"
       }, {
         "category": "SEXUALLY_EXPLICIT_CONTENT",
-        "filterLevel": "BLOCK_SOME"
+        "filterLevel": "BLOCK_FEW"
       }, {
         "category": "HARASSMENT",
-        "filterLevel": "BLOCK_SOME"
+        "filterLevel": "BLOCK_FEW"
       }, {
         "category": "HATE_SPEECH",
-        "filterLevel": "BLOCK_SOME"
+        "filterLevel": "BLOCK_FEW"
       } ]
     },
     "defaultRaiSettings": {
@@ -39,13 +39,13 @@
       "filterLevel": "MINIMAL_BLOCKING"
     }, {
       "category": "SEXUALLY_EXPLICIT_CONTENT",
-      "filterLevel": "MODERATE_BLOCKING"
+      "filterLevel": "MINIMAL_BLOCKING"
     }, {
       "category": "HARASSMENT",
-      "filterLevel": "MODERATE_BLOCKING"
+      "filterLevel": "MINIMAL_BLOCKING"
     }, {
       "category": "HATE_SPEECH",
-      "filterLevel": "MODERATE_BLOCKING"
+      "filterLevel": "MINIMAL_BLOCKING"
     } ],
     "defaultResponsibleAiFilters": [ {
       "category": "DANGEROUS_CONTENT",
@@ -77,7 +77,7 @@
   "llmModelSettings": {
     "model": "gemini-2.0-flash-001",
     "parameters": {
-      "temperature": 0.89999998,
+      "temperature": 0.5,
       "inputTokenLimit": "INPUT_TOKEN_LIMIT_SHORT",
       "outputTokenLimit": "OUTPUT_TOKEN_LIMIT_SHORT"
     }

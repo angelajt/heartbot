@@ -1,24 +1,24 @@
 {
   "name": "f7834bcd-cf31-4f7f-a007-81b18fa53b25",
   "displayName": "knowledge-bank",
-  "description": "Frequently asked medical questions that the user may ask during the chatbot interaction. If a user asks a question that is in this list, answer with the information from this data store instead of your own knowledge base.",
+  "description": "Frequently asked medical questions that the user may ask during the chatbot interaction. If a user asks a question that is in this list, answer with the information from this data store instead of your own knowledge base. If the question does not exist in the knowledge bank, reply with \"I'm sorry, I don't know the answer to your question.\" Then continue the conversation.",
   "dataStoreSpec": {
     "dataStoreConnections": [ {
       "dataStoreType": "STRUCTURED",
-      "dataStore": "projects/970039229590/locations/us/collections/default_collection/dataStores/knowledge-bank-v2_1758069032737",
+      "dataStore": "projects/970039229590/locations/us/collections/default_collection/dataStores/knowledge-bank-v3_1761075631190",
       "documentProcessingMode": "DOCUMENTS",
       "engineType": "CHAT_ENGINE",
       "connectorConfig": {
       
       },
       "createTime": {
-        "seconds": 1758069034,
-        "nanos": 544000000
+        "seconds": 1761075632,
+        "nanos": 757765000
       },
-      "displayName": "knowledge-bank-v2",
+      "displayName": "knowledge-bank-v3",
       "dialogflowAddTime": {
-        "seconds": 1758069034,
-        "nanos": 544000000
+        "seconds": 1761075755,
+        "nanos": 658000000
       }
     } ],
     "models": {

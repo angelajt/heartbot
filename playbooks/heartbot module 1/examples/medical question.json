@@ -1,0 +1,88 @@
+{
+  "name": "90144ad0-957f-47d5-9551-92cdbc0811ff",
+  "actions": [ {
+    "userUtterance": {
+      "text": "hello"
+    }
+  }, {
+    "agentUtterance": {
+      "text": "Hello, I am HeartBot from the UCSF study. 😃 I will ask you several questions. Please answer in your own words. Don’t worry about getting the answers right. This chat will take about 15 minutes.\n\nIf you are experiencing a medical emergency, please call 911 immediately. At the end of this session, you will be asked 2 questions and you also can ask questions.\n\nLet’s get started!\n\nPlease tell me your first name.\n"
+    }
+  }, {
+    "userUtterance": {
+      "text": "angela"
+    }
+  }, {
+    "agentUtterance": {
+      "text": "I’m so glad to be talking with you today, Angela.\n\nPlease text “start over” at any point to start the conversation from the beginning.\n\nQ1) What do you know about heart attacks? 🫀\n"
+    }
+  }, {
+    "userUtterance": {
+      "text": "they can be fatal"
+    }
+  }, {
+    "agentUtterance": {
+      "text": "Thank you for your response. Heart attack is a medical emergency. It occurs when the coronary arteries are blocked (see the image) and not providing enough oxygen to the heart and body. Your heart can stop if you don’t get an immediate medical treatment.\n\nQ2) What are the symptoms of a heart attack?\n"
+    }
+  }, {
+    "userUtterance": {
+      "text": "idk"
+    }
+  }, {
+    "agentUtterance": {
+      "text": "There can be several symptoms of a heart attack, Angela. It’s important to remember that CHEST PAIN or PRESSURE are the most common symptoms. Common symptoms in women are:\n•Chest pain, pressure, or discomfort\n•Pain in the shoulder, arm, or upper back pain\n•Shortness of breath\n•Heartburn/nausea\n•Extreme fatigue\n\nQ3) What is the number one cause of death for women in the US?\n"
+    }
+  }, {
+    "userUtterance": {
+      "text": "can someone have a heart attack without symptoms?"
+    }
+  }, {
+    "agentUtterance": {
+      "text": "Yes. A heart attack can actually happen without a person knowing it. You can understand why it is called a \"silent\" heart attack. People who have these so-called silent heart attacks are more likely to have non-specific and subtle symptoms, such as: indigestion, a case of the flu, or they may think that they strained a muscle in their chest or their upper back. It also may not be discomfort in the chest, it may be in the jaw or the upper back or arms. Some folks have prolonged and excessive fatigue that is unexplained.\n\nQ3) What is the number one cause of death for women in the US?\n"
+    }
+  }, {
+    "userUtterance": {
+      "text": "how would i know if i am having a silent heart attack?"
+    }
+  }, {
+    "agentUtterance": {
+      "text": "A silent heart attack, also called a silent Ischemia, is a heart attack that has either no symptoms, minimal symptoms or unrecognized symptoms. A heart attack is not always as obvious as pain in your chest, shortness of breath and cold sweats. But it is like any other heart attack where blood flow to a section of the heart is temporarily blocked and can cause scarring and damage to the heart muscle.\n\nNow, let's get back to the questions.\n\nQ3) What is the number one cause of death for women in the US?\n"
+    }
+  }, {
+    "userUtterance": {
+      "text": "heart disease"
+    }
+  }, {
+    "agentUtterance": {
+      "text": "You are right, heart disease is the number one killer of women in the US. Women usually get heart disease later in life than men. A common misconception is that women don’t get heart disease as often.\n\nQ4) After a heart attack, which group is sicker? Women or men?\n"
+    }
+  }, {
+    "userUtterance": {
+      "text": "do women get heart attacks more often than men?"
+    }
+  }, {
+    "agentUtterance": {
+      "text": "Both women and men experience chest pain during a serious heart event, however, women are more likely to have some of the other common symptoms particularly short of breath, nausea/vomiting, or back or jaw pain. Older people may faint, which can be a sign of heart attack.\n\nNow, let's get back to the questions.\n\nQ4) After a heart attack, which group is sicker? Women or men?\n"
+    }
+  }, {
+    "userUtterance": {
+      "text": "i don't know"
+    }
+  }, {
+    "agentUtterance": {
+      "text": "Actually, women across all age groups do worse than men after a heart attack. Women are:\n1. More likely to have a longer delay for heart attack treatment\n2. More likely to have complications after a heart attack\n3. Less likely to go to cardiac rehab\n4. More likely to die within one year of a heart attack\n\nQ5) What should you do first when you are experiencing symptoms of a heart attack?\n"
+    }
+  } ],
+  "playbookOutput": {
+    "executionSummary": "When the user asks a medical question, the agent responds by referring to the knowledge bank tool.",
+    "actionParameters": {
+    
+    }
+  },
+  "displayName": "medical question",
+  "retrievalStrategy": "DEFAULT",
+  "description": "the user asks a medical question, and the agent responds by referring to ${tool:knowledge-bank}",
+  "tokenCount": 1127,
+  "conversationState": "OUTPUT_STATE_OK",
+  "languageCode": "en"
+}

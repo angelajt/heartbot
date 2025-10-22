@@ -1,0 +1,19 @@
+{
+  "name": "cf337d32-82f3-4173-9dd2-8f37f5298bab",
+  "displayName": "illustration",
+  "form": {
+  
+  },
+  "entryFulfillment": {
+    "messages": [ {
+      "payload": {
+        "richContent": [ [ {
+          "accessibilityText": "Illustration of a heart",
+          "rawUrl": "https://ucsf.box.com/shared/static/gbbqtazp22mrnmu3nsyl7d86rninskdj.jpeg",
+          "type": "image"
+        } ] ]
+      },
+      "languageCode": "en"
+    } ]
+  }
+}

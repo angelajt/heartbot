@@ -1,0 +1,56 @@
+{
+  "name": "0800e62f-11b2-4f22-95b3-c76220c6c9cc",
+  "actions": [ {
+    "userUtterance": {
+      "text": "hello"
+    }
+  }, {
+    "agentUtterance": {
+      "text": "Hello, I am HeartBot from the UCSF study. 😃 I will ask you several questions. Please answer in your own words. Don’t worry about getting the answers right. This chat will take about 15 minutes.\n\nIf you are experiencing a medical emergency, please call 911 immediately. At the end of this session, you will be asked 2 questions and you also can ask questions.\n\nLet’s get started!\n\nPlease tell me your first name.\n"
+    }
+  }, {
+    "userUtterance": {
+      "text": "angela"
+    }
+  }, {
+    "agentUtterance": {
+      "text": "I’m so glad to be talking with you today, Angela.\n\nPlease text “start over” at any point to start the conversation from the beginning.\n\nQ1) What do you know about heart attacks? 🫀\n"
+    }
+  }, {
+    "userUtterance": {
+      "text": "idk"
+    }
+  }, {
+    "agentUtterance": {
+      "text": "Thank you for your response. Heart attack is a medical emergency. It occurs when the coronary arteries are blocked (see the image) and not providing enough oxygen to the heart and body. Your heart can stop if you don’t get an immediate medical treatment.\n\nQ2) What are the symptoms of a heart attack?\n"
+    }
+  }, {
+    "userUtterance": {
+      "text": "when am i getting paid"
+    }
+  }, {
+    "agentUtterance": {
+      "text": "After you complete all study requirements, you will receive an electronic gift card.\n\nQ2) What are the symptoms of a heart attack?\n"
+    }
+  }, {
+    "userUtterance": {
+      "text": "chest pain"
+    }
+  }, {
+    "agentUtterance": {
+      "text": "There can be several symptoms of a heart attack, Angela. It’s important to remember that CHEST PAIN or PRESSURE are the most common symptoms. Common symptoms in women are:\n•Chest pain, pressure, or discomfort\n•Pain in the shoulder, arm, or upper back pain\n•Shortness of breath\n•Heartburn/nausea\n•Extreme fatigue\n\nQ3) What is the number one cause of death for women in the US?\n"
+    }
+  } ],
+  "playbookOutput": {
+    "executionSummary": "When the user asks when they will get paid, respond with \"After you complete all study requirements, you will receive an electronic gift card.\"",
+    "actionParameters": {
+    
+    }
+  },
+  "displayName": "User asks when they are getting paid",
+  "retrievalStrategy": "DEFAULT",
+  "description": "When the user asks when they will get paid, respond with \"After you complete all study requirements, you will receive an electronic gift card.\"",
+  "tokenCount": 540,
+  "conversationState": "OUTPUT_STATE_OK",
+  "languageCode": "en"
+}
