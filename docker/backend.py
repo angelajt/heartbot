@@ -61,7 +61,5 @@ def chat_with_module(message_text: str, session_id: str, module: int) -> dict:
     match = re.search(r'\[image:\s*(.*?)\]', agent_text)
     if match:
         image_url = match.group(1).strip()
-        # Remove the image tag from the agent text.
-        agent_text = re.sub(r'\[image:\s*.*?\]', '', agent_text).strip()
     
     return {"response": agent_text, "image": image_url}

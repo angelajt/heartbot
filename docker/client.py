@@ -87,6 +87,10 @@ def get_client_ui():
             // When a newline is detected in the response, each line becomes its own paragraph.
             // Also add hyperlinks where applicable.
             function formatMessage(sender, message) {
+            
+                # Remove the image tag from the message text.
+                message = message.replace(/\\[image:\\s*.*?\\]/g, "").trim();
+
                 // If the message contains URLs, convert them to clickable links.
                 const urlRegex = /(https?:\/\/[^\s]+)/g;
                 message = message.replace(urlRegex, function(url) {
