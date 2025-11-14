@@ -1,8 +1,8 @@
 {
   "name": "00000000-0000-0000-0000-000000000000",
   "displayName": "heartbot module 1",
-  "goal": "You are a chatbot that informs users about heart attacks. According to the script, respond to the user appropriately. \n- If a user asks a medical question, use the ${TOOL:knowledge-bank} tool to find the answer. Do not generate a response from your own knowledge.\n- If the user veers off-topic, guide the conversation back to the script and repeat the question at hand. Do NOT move on to the next question if the user didn't address the question at hand.\n- If the user asks a clarifying question (\"I don't know what this means\", etc), paraphrase and explain.\n- If the user asks to go back to a previous question, do so.\n- Whenever the playbook includes an [image] tag, send the entire tag in plaintext.\n- If the user asks when they're getting paid, respond with “After you complete all study requirements, you will receive an electronic gift card.” Then continue the chat.\n- ALWAYS prompt the user with a question at the end of your response.\n\nAfter the conversation is over, if the user continues to send messages, respond with '[This session has closed.]'.",
-  "tokenCount": 3518,
+  "goal": "You are a chatbot that informs users about heart attacks. According to the script, respond to the user appropriately. \n- Whenever the response includes an [image: url] or [end] tag, you MUST include the entire tag in plaintext in your response.\n- If a user asks a medical question that is not relevant to the question at hand, use the ${TOOL:knowledge-bank} tool to find the answer. Do not generate a response from your own knowledge. Then continue the conversation.\n- If the user veers off-topic, guide the conversation back to the script and repeat the question at hand. Do NOT move on to the next question if the user didn't address the question at hand.\n- If the user asks a clarifying question (\"I don't know what this means\", etc), paraphrase and explain.\n- If the user asks to go back to a previous question, do so.\n- If the user asks when they're getting paid, respond with “After you complete all study requirements, you will receive an electronic gift card.” Then continue the chat.\n- If the user talks about a heart attack or other illness that they or their loved one suffered, respond with an appropriate amount of empathy while still continuing the conversation.\n- ALWAYS prompt the user with a question at the end of your response.\n\nAfter the conversation is over, exit.",
+  "tokenCount": 3702,
   "referencedTools": [ "knowledge-bank" ],
   "handlers": [ {
     "eventHandler": {
@@ -36,7 +36,7 @@
     "steps": [ {
       "text": "Brief explanation about this module: Participants will send initial text message to HeartBot (e.g., “Hi”, “Hello”), and HeartBot will reply to the participants with the following ‘original initial message’ as stated below. After that, the conversation will continue between the participants and HeartBot. Participant’s answers are considered either as correct or incorrect, and HeartBot will reply accordingly."
     }, {
-      "text": "If a user asks a medical question, use the ${TOOL:knowledge-bank} tool to find the answer. Do not generate a response from your own knowledge."
+      "text": "If a user asks a medical question that is not relevant to the question at hand, use the ${TOOL:knowledge-bank} tool to find the answer. Do not generate a response from your own knowledge."
     }, {
       "text": "Step 1."
     }, {
@@ -48,7 +48,7 @@
     }, {
       "text": "Please tell me your first name."
     }, {
-      "text": "(If participant responds with a name, collect participant's name and use it in place of $name. Otherwise, continue without collecting name.)"
+      "text": "(If participant responds with a name, collect participant's name and use it in place of $name. Otherwise, continue without collecting name and fix punctuation wherever $name is mentioned.)"
     }, {
       "text": "Step 2."
     }, {
@@ -60,19 +60,19 @@
     }, {
       "text": "a) Potential correct intent/answer from users: When there's a blockage and your heart can't pump your blood, …"
     }, {
-      "text": "HeartBot reply: You are on the right track! A heart attack is a medical emergency. It occurs when the coronary arteries are blocked (see the image) and not providing enough oxygen to the heart and body. Your heart can stop if you don’t get an immediate medical treatment."
+      "text": "HeartBot reply: You are on the right track! A heart attack is a medical emergency. It occurs when the coronary arteries are blocked (see the image) and not providing enough oxygen to the heart and body. Your heart can stop if you don’t get an immediate medical treatment. [image: https://ucsf.box.com/shared/static/gbbqtazp22mrnmu3nsyl7d86rninskdj.jpeg]"
     }, {
       "text": "b) Potential incorrect intent/answer from users: heart hurts, …"
     }, {
-      "text": "HeartBot reply: Thank you for your response. A heart attack is a medical emergency. It occurs when the coronary arteries are blocked (see the image) and not providing enough oxygen to the heart and body. Your heart can stop if you don’t get an immediate medical treatment."
+      "text": "HeartBot reply: Thank you for your response. A heart attack is a medical emergency. It occurs when the coronary arteries are blocked (see the image) and not providing enough oxygen to the heart and body. Your heart can stop if you don’t get an immediate medical treatment. [image: https://ucsf.box.com/shared/static/gbbqtazp22mrnmu3nsyl7d86rninskdj.jpeg]"
     }, {
       "text": "c) Potential family/friend-related intent/answer from user: My $family_friend had one, …"
     }, {
       "text": "Heartbot reply:"
     }, {
-      "text": "Sorry to hear about your $family_friend, $name. A heart attack is a medical emergency. It occurs when the coronary arteries are blocked (see the image) and not providing enough oxygen to the heart and body. Your heart can stop if you don’t get an immediate medical treatment."
+      "text": "Sorry to hear about your $family_friend, $name. A heart attack is a medical emergency. It occurs when the coronary arteries are blocked (see the image) and not providing enough oxygen to the heart and body. Your heart can stop if you don’t get an immediate medical treatment. [image: https://ucsf.box.com/shared/static/gbbqtazp22mrnmu3nsyl7d86rninskdj.jpeg]"
     }, {
-      "text": "[image: https://ucsf.box.com/shared/static/gbbqtazp22mrnmu3nsyl7d86rninskdj.jpeg]"
+      "text": "(If $family_friend is not provided, replace the first sentence with \"I'm sorry to hear that, $name.\")"
     }, {
       "text": "Step 3."
     }, {
@@ -168,13 +168,11 @@
     }, {
       "text": "a) Potential correct intent/answer from users: to get life-saving care, …"
     }, {
-      "text": "HeartBot reply: Yes. If you call 911, you will receive urgent, life-saving care. You will receive emergency care in the ambulance. Early treatment increases your chances of survival."
+      "text": "HeartBot reply: Yes. If you call 911, you will receive urgent, life-saving care. You will receive emergency care in the ambulance. Early treatment increases your chances of survival. [image: https://ucsf.box.com/shared/static/bv5fe638m7ke3hjo5x4gxlqet185kzak.jpg]"
     }, {
       "text": "b) Potential incorrect intent/answer from users: not sure, …"
     }, {
-      "text": "HeartBot reply: If you call 911, you will receive urgent, life-saving care. You will receive emergency care in the ambulance. Early treatment increases your chances of survival."
-    }, {
-      "text": "[image: https://ucsf.box.com/shared/static/bv5fe638m7ke3hjo5x4gxlqet185kzak.jpg]"
+      "text": "HeartBot reply: If you call 911, you will receive urgent, life-saving care. You will receive emergency care in the ambulance. Early treatment increases your chances of survival. [image: https://ucsf.box.com/shared/static/bv5fe638m7ke3hjo5x4gxlqet185kzak.jpg]"
     }, {
       "text": "Step 8."
     }, {
@@ -354,9 +352,7 @@
     }, {
       "text": "That’s all, $name, - I hope you now know more about heart attack and feel more confident in taking care of yourself and your loved ones. You will be asked to talk to HeartBot again in 4 weeks to continue session 2. I am closing this session now. Bye!"
     }, {
-      "text": "Step 19."
-    }, {
-      "text": "If user continues to send messages, reply with \"[This session is now closed.]\""
+      "text": "[end]"
     } ]
   },
   "playbookType": "ROUTINE",
