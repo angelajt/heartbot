@@ -16,6 +16,7 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     response: str
     image: Optional[str] = None
+    end: bool
 
 # Endpoint that receives a chat message from phone apps or web apps,
 # forwards it to the backend module, and returns the agent's response as JSON.

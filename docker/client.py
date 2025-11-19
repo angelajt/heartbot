@@ -88,7 +88,7 @@ def get_client_ui():
             // Also add hyperlinks where applicable.
             function formatMessage(sender, message) {
             
-                # Remove the image tag from the message text.
+                // Remove the image tag from the message text.
                 message = message.replace(/\\[image:\\s*.*?\\]/g, "").trim();
 
                 // If the message contains URLs, convert them to clickable links.
@@ -171,3 +171,4 @@ def get_client_ui():
     </html>
     """
     return HTMLResponse(content=html_content, status_code=200)
+

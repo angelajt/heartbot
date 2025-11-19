@@ -30,7 +30,10 @@ LANGUAGE_CODE = "en-us"
 # Configure the client with the regional endpoint.
 api_endpoint = f"{LOCATION_ID}-dialogflow.googleapis.com:443"
 client_options = {"api_endpoint": api_endpoint}
-session_client = SessionsClient(client_options=client_options)
+try:
+    session_client = SessionsClient(client_options=client_options)
+except Exception as e:
+    print(f"Error initializing SessionsClient: {e}")
 
 # Function to send a message to your agent. Frontend should call this.
 # Now requires the client to provide a session_id, allowing client-controlled persistent sessions.
@@ -40,26 +43,38 @@ def chat_with_module(message_text: str, session_id: str, module: int) -> dict:
     session_path = f"{PATH}/{agent_id}/sessions/{session_id}"
 
     print(f"Session path: {session_path}")
-    
+
     text_input = session.TextInput(text=message_text)
     query_input = session.QueryInput(text=text_input, language_code=LANGUAGE_CODE)
     request = session.DetectIntentRequest(
-        session=session_path, 
+        session=session_path,
         query_input=query_input
     )
-    
+
     response = session_client.detect_intent(request=request)
-    
+
+    print(response)
+
     # Extract the response text.
     response_messages = [
         " ".join(msg.text.text) for msg in response.query_result.response_messages
     ]
     agent_text = " ".join(response_messages)
-    
+
+    if not agent_text.strip():
+        agent_text = "I'm sorry, I didn't understand that. Could you please rephrase? If this is an emergency, please call 911 immediately."
+
     # Search for an image tag in the format "[image: <image_url>]"
     image_url = None
-    match = re.search(r'\[image:\s*(.*?)\]', agent_text)
-    if match:
-        image_url = match.group(1).strip()
-    
-    return {"response": agent_text, "image": image_url}
+    img_match = re.search(r'\[image:\s*(.*?)\]', agent_text)
+    if img_match:
+        image_url = img_match.group(1).strip()
+
+    # Search for an end tag in the format "[end]"
+    end_conversation = False
+    end_match = re.search(r'\[end\]', agent_text)
+    if end_match:
+        agent_text = agent_text[:end_match.start()].strip()
+        end_conversation = True
+
+    return {"response": agent_text, "image": image_url, "end": end_conversation}
