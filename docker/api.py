@@ -1,7 +1,7 @@
 from typing import Optional
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-import backend  # Import the backend module to talk to the Google conversational agents API
+import heartbot  # Import the heartbot library to talk to the Google conversational agents API
 from fastapi.responses import HTMLResponse
 import client  # Import the client module that provides the UI
 
@@ -19,12 +19,12 @@ class ChatResponse(BaseModel):
     end: bool
 
 # Endpoint that receives a chat message from phone apps or web apps,
-# forwards it to the backend module, and returns the agent's response as JSON.
+# forwards it to the heartbot library, and returns the agent's response as JSON.
 # The response_model defines the response schema.
 @app.post("/chat", response_model=ChatResponse)
 def chat_endpoint(chat: ChatRequest):
     try:
-        agent_response = backend.chat_with_module(chat.message, chat.session_id, chat.module)
+        agent_response = heartbot.chat_with_module(chat.message, chat.session_id, chat.module)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     return ChatResponse(**agent_response)

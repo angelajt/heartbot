@@ -1,5 +1,5 @@
 import uvicorn
-from frontend import app
+from api import app
 
 # Set credentials by running `. ./local/.env` in terminal before executing this script
 
