@@ -35,8 +35,8 @@ try:
 except Exception as e:
     print(f"Error initializing SessionsClient: {e}")
 
-# Function to send a message to your agent. Frontend should call this.
-# Now requires the client to provide a session_id, allowing client-controlled persistent sessions.
+# Send a message to agent. 
+# api.py calls this
 def chat_with_module(message_text: str, session_id: str, module: int) -> dict:
     agent_id = MODULE_TO_AGENT_ID.get(module, DEFAULT_AGENT_ID)
     # Build the session path using the provided session_id.

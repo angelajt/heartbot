@@ -20,12 +20,12 @@ flowchart LR
     browser["Demo App <br>in Browser"] --> ui
     ui --> api
     api --> heartbot
-    heartbot --> dialogflow["Dialogflow CX"]
+    heartbot --> ca["Conversational Agents"]
     startup --> server
     server --> api
     browser@{shape: circle}
     style API_Container fill:#00C853
-    style dialogflow fill:#BBDEFB
+    style ca fill:#BBDEFB
 ```
 
 ## Component Descriptions
