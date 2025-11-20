@@ -10,20 +10,20 @@ flowchart LR
  subgraph API_Container["API Container"]
         ui["Demo UI<br>(heartbot.angelajt.com)<br>client.py"]
         api["<b>API and docs</b><br>(heartbot.angelajt.com/docs)<br>api.py"]
-        backend["Backend Logic<br>heartbot.py"]
+        heartbot["Heartbot library<br>heartbot.py"]
         startup["Startup Script<br>run.sh"]
         server["main.py"]
   end
  subgraph Host_VM["Host VM at GCP"]
         API_Container
   end
-    browser["Demo App in Browser"] --> ui
+    browser["Demo App <br>in Browser"] --> ui
     ui --> api
-    api --> backend
-    backend --> dialogflow["Dialogflow CX"]
+    api --> heartbot
+    heartbot --> dialogflow["Dialogflow CX"]
     startup --> server
     server --> api
-    browser@{ icon: "fa:user", form: "circle", pos: "b", h: 100}
+    browser@{shape: circle}
     style API_Container fill:#00C853
     style dialogflow fill:#BBDEFB
 ```
@@ -41,15 +41,15 @@ Heartbot API through a web-based interface, accessible through a web browser.
 ### API and Docs (`api.py`)
 
 The API layer, built with FastAPI, serves the primary endpoints used by the
-frontend. It also serves interactive documentation (Swagger UI) available at
-[heartbot.angelajt.com/docs](heartbot.angelajt.com/docs). It acts as the bridge
-between the user interface and backend logic.
+frontend (phone app). It also serves interactive documentation (Swagger UI)
+available at [heartbot.angelajt.com/docs](heartbot.angelajt.com/docs). It acts
+as the bridge between the user interface and Heartbot core library.
 
 **The API layer will be accessed directly by the production phone app.**
 
 - Calls heartbot.py `chat_with_module` function
 
-### Backend Logic (`heartbot.py`)
+### Heartbot Library (`heartbot.py`)
 
 This is the core of the heartbot application.
 - Handles Conversational Agents credential secrets, for security (we don't want
@@ -61,7 +61,7 @@ This is the core of the heartbot application.
 - Parses `[image]` tags (so that the app can show images in messages)
 - Parses `[end]` tags (so that we know when the user finishes a module)
 
-The backend communicates with Conversational Agents through a secure HTTPS
+The library communicates with Conversational Agents through a secure HTTPS
 connection.
 
 ### Startup Script (`run.sh`)
@@ -72,13 +72,13 @@ the FastAPI server inside the container.
 
 ### Application Entrypoint (`main.py`)
 
-This script starts up the FastAPI application defined in `api.py`.
-`api.py` in turn calls `heartbot.py`, as mentioned above.
+This script starts up the FastAPI application defined in `api.py`. `api.py` in
+turn calls `heartbot.py`, as mentioned above.
 
 ### Conversational Agents
 
 Conversational Agents provides only the LLM functionality that `heartbot.py`
-depends on. The Heartbot application itself is in `heartbot.py`.
+depends on. The Heartbot library itself is in `heartbot.py`.
 
 ### API Container
 
