@@ -14,8 +14,13 @@ flowchart LR
         startup["Startup Script<br>run.sh"]
         server["main.py"]
   end
+  subgraph Caddy_Container["Caddy Container"]
+        acme["ACME Client"]
+        proxy["HTTPS Reverse Proxy"]
+  end
  subgraph Host_VM["Host VM at GCP"]
         API_Container
+        Caddy_Container
   end
     browser["Demo App <br>in Browser"] --> ui
     ui --> api
@@ -25,6 +30,7 @@ flowchart LR
     server --> api
     browser@{shape: circle}
     style API_Container fill:#00C853
+    style Caddy_Container fill:#00C853
     style ca fill:#BBDEFB
 ```
 
@@ -86,6 +92,13 @@ This is a Docker container that packages and isolates the application
 components (`client.py`, `api.py`, `heartbot.py`, `main.py`, and `run.sh`).
 Encapsulating everything in a Docker container enables reproducible
 deployments.
+
+### Caddy Container
+
+A separate Docker container running Caddy, a web server that handles HTTPS
+termination and reverse proxying to the API container. It ensures secure
+communication between clients and the API. It also fetches and manages TLS
+certificates from Let's Encrypt automatically.
 
 ### Host VM at GCP
 
