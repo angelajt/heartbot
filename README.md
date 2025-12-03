@@ -22,7 +22,9 @@ flowchart LR
         API_Container
         Caddy_Container
   end
-    browser["Demo App <br>in Browser"] --> ui
+    browser["Demo App <br>in Browser"] --> proxy
+    phoneapp["Phone App"] --> proxy
+    proxy --> api
     ui --> api
     api --> heartbot
     heartbot --> ca["Conversational Agents"]
