@@ -1,0 +1,7 @@
+{
+    email angela@t7a.org
+}
+
+heartbot.angelajt.com {
+    reverse_proxy heartbot:8042
+}

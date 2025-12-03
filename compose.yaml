@@ -1,8 +1,25 @@
 version: '3.8'
 services:
+  caddy:
+    image: us-central1-docker.pkg.dev/heartbot2/heartbot/caddy:latest
+    container_name: caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - heartbot
+    restart: always
+
   heartbot:
     image: us-central1-docker.pkg.dev/heartbot2/heartbot/heartbot:${TAG}
     container_name: heartbot
-    ports:
-      - "${PORT}:8042"
+    expose:
+      - "8042"
     restart: "always"
+
+volumes:
+  caddy_data:
+  caddy_config:
