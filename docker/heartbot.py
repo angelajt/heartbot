@@ -46,9 +46,12 @@ def chat_with_module(message_text: str, session_id: str, module: int) -> dict:
 
     text_input = session.TextInput(text=message_text)
     query_input = session.QueryInput(text=text_input, language_code=LANGUAGE_CODE)
+    # llm_model_settings = session.LlmModelSettings(model="gemini-2.5-flash")
+    parameters = session.QueryParameters(session_ttl="86399s") #, llm_model_settings=llm_model_settings)
     request = session.DetectIntentRequest(
         session=session_path,
-        query_input=query_input
+        query_input=query_input,
+        query_params=parameters
     )
 
     response = session_client.detect_intent(request=request)
